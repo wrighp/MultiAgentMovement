@@ -28,4 +28,11 @@ public class PlayerController : MonoBehaviour {
 		Gizmos.color = Color.black;
 		Gizmos.DrawWireSphere(position, 0.125f);
 	}
+
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if(collision.gameObject.GetComponent<AgentMovement>() != null){
+			Destroy(collision.gameObject);
+		}
+	}
 }
