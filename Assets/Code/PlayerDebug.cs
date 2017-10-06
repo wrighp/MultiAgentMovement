@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PlayerDebug : MonoBehaviour {
 
 	public static PlayerDebug instance;
 	public Material mat;
 	public int circleSegments = 16;
+	public bool renderOnPause = true;
 	List<Vector3> verts;
 	List<Color> colors;
 	List<float> times;
@@ -15,7 +17,11 @@ public class PlayerDebug : MonoBehaviour {
 	List<float> circleRadii;
 	List<Color> circleColors;
 
+	bool paused = false;
+
 	void Awake(){
+		EditorApplication.playmodeStateChanged += OnStateChange;
+
 		instance = this;
 		verts = new List<Vector3>();
 		colors = new List<Color>();
@@ -25,6 +31,11 @@ public class PlayerDebug : MonoBehaviour {
 		circleRadii = new List<float>();
 		circleColors = new List<Color>();
 	}
+
+	private void OnStateChange(){
+		paused = renderOnPause && Application.isEditor && EditorApplication.isPaused;
+	}
+
 	// Use this for initialization
 	void Start () {
 
@@ -32,7 +43,7 @@ public class PlayerDebug : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		
 	}
 
 	public static void DrawCircle(Vector3 position, float radius, Color? color = null){
@@ -106,24 +117,24 @@ public class PlayerDebug : MonoBehaviour {
 		GL.End();
 		GL.PopMatrix();
 
-
-
-		int count = times.Count;
-		//Add line back in if time isn't up
-		float t = Time.deltaTime;
-		for (int i = 0, timesCount = times.Count; i < timesCount; i++) {
-			float d = times [i];
-			if(d >= 0){
-				times.Add(d - t);
-				verts.Add(verts[i*2]);
-				verts.Add(verts[i*2 + 1]);
-				colors.Add(colors[i]);
+		if(!paused){
+			int count = times.Count;
+			//Add line back in if time isn't up
+			float t = Time.deltaTime;
+			for (int i = 0, timesCount = times.Count; i < timesCount; i++) {
+				float d = times [i];
+				if(d >= 0){
+					times.Add(d - t);
+					verts.Add(verts[i*2]);
+					verts.Add(verts[i*2 + 1]);
+					colors.Add(colors[i]);
+				}
 			}
-		}
 
-		times.RemoveRange(0,count);
-		verts.RemoveRange(0,count * 2);
-		colors.RemoveRange(0,count);
+			times.RemoveRange(0,count);
+			verts.RemoveRange(0,count * 2);
+			colors.RemoveRange(0,count);
+		}
 	}
 
 	void DrawCircles(){
@@ -162,9 +173,13 @@ public class PlayerDebug : MonoBehaviour {
 		}
 		GL.PopMatrix();
 
-		circleCenters.Clear();
-		circleRadii.Clear();
-		circleColors.Clear();
-
+		if(!paused){
+			circleCenters.Clear();
+			circleRadii.Clear();
+			circleColors.Clear();
+		}
 	}
+
+
+
 }
