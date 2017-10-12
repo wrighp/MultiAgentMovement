@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 public class PlayerDebug : MonoBehaviour {
 
@@ -118,6 +119,7 @@ public class PlayerDebug : MonoBehaviour {
 		GL.PopMatrix();
 
 		if(!paused){
+
 			int count = times.Count;
 			//Add line back in if time isn't up
 			float t = Time.deltaTime;
@@ -130,6 +132,7 @@ public class PlayerDebug : MonoBehaviour {
 					colors.Add(colors[i]);
 				}
 			}
+   
 
 			times.RemoveRange(0,count);
 			verts.RemoveRange(0,count * 2);
@@ -145,7 +148,8 @@ public class PlayerDebug : MonoBehaviour {
 		mat.color = Color.white;
 
 		const float totalRadians = Mathf.PI * 2f;
-		float angleInc = Mathf.Max(0, totalRadians / circleSegments);
+		circleSegments = Math.Max(3, circleSegments);
+		float angleInc = totalRadians / circleSegments;
 
 		for (int i = 0, circleCentersCount = circleCenters.Count; i < circleCentersCount; i++) {
 			Vector3 center = circleCenters [i];
