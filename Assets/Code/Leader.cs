@@ -13,8 +13,10 @@ public class Leader : MonoBehaviour {
 
     LayerMask obstacles_mask;
 
-    public int num_slots = 5;
+    public List<Follower> my_followers = new List<Follower>();
 
+    const float path_step_frequency = 1f;
+    float path_step_timer = 0f;
 
     void Start () {
         // set up the mask to include only obstacles
@@ -41,14 +43,28 @@ public class Leader : MonoBehaviour {
 
 
 
-        for (int i = 0; i < num_slots; i++) {
-            float angle = (((float)i)/num_slots)*Mathf.PI*2f + (transform.eulerAngles.z * Mathf.Deg2Rad);
+        for (int i = 0; i < my_followers.Count; i++) {
+            float angle = (((float)i)/my_followers.Count)*Mathf.PI*2f + (transform.eulerAngles.z * Mathf.Deg2Rad);
             Vector3 newpos = transform.position + (new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f))*(current_radius - agent_radius_buffer);
 
             PlayerDebug.DrawLine(transform.position, newpos, Color.black);
-
             PlayerDebug.DrawCircle(newpos, agent_radius_buffer, new Color(0f,0f,0f,0.5f));
         }
+
+
+        path_step_timer += Time.deltaTime;
+        if (path_step_timer > path_step_frequency) {
+            path_step_timer -= path_step_frequency;
+
+            for (int i = 0; i < my_followers.Count; i++) {
+                my_followers[i].path_points.Enqueue(get_slot_position(i));
+            }
+        }
+    }
+
+    Vector3 get_slot_position (int index) {
+        float angle = (((float)index)/my_followers.Count)*Mathf.PI*2f + (transform.eulerAngles.z * Mathf.Deg2Rad);
+        return transform.position + (new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f))*(current_radius - agent_radius_buffer);
     }
 
 }
