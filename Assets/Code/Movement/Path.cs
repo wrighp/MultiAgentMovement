@@ -19,4 +19,21 @@ public class Path : MonoBehaviour {
             }
         }
     }
+
+    void OnDrawGizmos() {
+        if (points.Count >= 2) {
+
+            Gizmos.color = path_color;
+            for (int i = 1; i < points.Count; i++) {
+				Gizmos.DrawLine(points[i-1].transform.position, points[i].transform.position);
+            }
+
+            if (looping) {
+                Gizmos.color = path_color * 2f;
+			    Gizmos.DrawLine(points[0].transform.position, points[points.Count-1].transform.position);
+            }
+        }
+    }
+
+
 }
