@@ -23,6 +23,10 @@ public class Leader : MonoBehaviour {
         string[] layers = new string[1];
         layers[0] = "Obstacles";
         obstacles_mask = LayerMask.GetMask(layers);
+
+        for (int i = 0; i < my_followers.Count; i++) {
+            my_followers[i].my_leader = this;
+        }
     }
 
     void Update () {
@@ -47,8 +51,8 @@ public class Leader : MonoBehaviour {
             float angle = (((float)i)/my_followers.Count)*Mathf.PI*2f + (transform.eulerAngles.z * Mathf.Deg2Rad);
             Vector3 newpos = transform.position + (new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f))*(current_radius - agent_radius_buffer);
 
-            PlayerDebug.DrawLine(transform.position, newpos, Color.black);
-            PlayerDebug.DrawCircle(newpos, agent_radius_buffer, new Color(0f,0f,0f,0.5f));
+            //PlayerDebug.DrawLine(transform.position, newpos, Color.black);
+            //PlayerDebug.DrawCircle(newpos, agent_radius_buffer, new Color(0f,0f,0f,0.5f));
         }
 
 
@@ -62,7 +66,7 @@ public class Leader : MonoBehaviour {
         }
     }
 
-    Vector3 get_slot_position (int index) {
+    public Vector3 get_slot_position (int index) {
         float angle = (((float)index)/my_followers.Count)*Mathf.PI*2f + (transform.eulerAngles.z * Mathf.Deg2Rad);
         return transform.position + (new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f))*(current_radius - agent_radius_buffer);
     }

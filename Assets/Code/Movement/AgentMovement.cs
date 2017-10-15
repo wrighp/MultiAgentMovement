@@ -42,7 +42,7 @@ public class AgentMovement : MonoBehaviour {
 		//rb.AddForce(targetDirection * Mathf.Min(maxAcceleration, acceleration * maxAcceleration));
 
 		//If force should always be forward based on aimingDirection
-		rb.AddForce(aimingDirection * Mathf.Min(maxAcceleration, acceleration * maxAcceleration));
+		rb.AddForce((aimingDirection * Mathf.Min(maxAcceleration, acceleration * maxAcceleration))*rb.mass);
 
 
 		//This clamping is not actually accurate as the addForce will increase the speed for a frame after
