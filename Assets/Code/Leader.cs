@@ -31,6 +31,13 @@ public class Leader : MonoBehaviour {
 
     void Update () {
 
+        for (int i = 0; i < my_followers.Count; i++) {
+            if (my_followers[i] == null) {
+                my_followers.RemoveAt(i);
+                break;  // only ever remove one follower per frame to avoid breaking list traversal -- if there are more we'll just get em next frame
+            }
+        }
+
         blocked = false;
         current_radius = 0f;
         
