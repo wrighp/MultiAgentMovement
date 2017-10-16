@@ -63,14 +63,15 @@ public class Leader : MonoBehaviour {
 		PlayerDebug.DrawCircle(transform.position, current_radius, new Color(1f,1f,0f,0.35f),0,sides);
 
 
-
+		/*
         for (int i = 0; i < my_followers.Count; i++) {
             float angle = (((float)i)/my_followers.Count)*Mathf.PI*2f + (transform.eulerAngles.z * Mathf.Deg2Rad);
             Vector3 newpos = transform.position + (new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f))*(current_radius - agent_radius_buffer);
 
-            //PlayerDebug.DrawLine(transform.position, newpos, Color.black);
-            //PlayerDebug.DrawCircle(newpos, agent_radius_buffer, new Color(0f,0f,0f,0.5f));
+            PlayerDebug.DrawLine(transform.position, newpos, Color.black);
+            PlayerDebug.DrawCircle(newpos, agent_radius_buffer, new Color(0f,0f,0f,0.5f));
         }
+        */
 
 		//Drops target circles based on distance and size of current circle
 		if (Vector2.Distance (transform.position, lastPosition) >= lastRadius + current_radius * radiusOffset) {
@@ -79,7 +80,8 @@ public class Leader : MonoBehaviour {
 			lastRadius = current_radius;
 
 			for (int i = 0; i < my_followers.Count; i++) {
-				my_followers[i].path_points.Enqueue(get_slot_position(i));
+				my_followers[i].path_points.Add(transform.position);
+				my_followers[i].points_radii.Add(current_radius);
 			}
 		}
 
@@ -106,7 +108,7 @@ public class Leader : MonoBehaviour {
 
 		for (int i = 0; i < my_followers.Count; i++) {
 			Follower follower = my_followers [i];
-			//Create new leader
+			//Create new leader by copying values of this leader
 			if (i == 0 && transferLeadership) {
 				leader = follower.gameObject.AddComponent<Leader> ();
 				leader.debugCircleLife = debugCircleLife;
@@ -120,6 +122,7 @@ public class Leader : MonoBehaviour {
 				pathFollow.path_index = thisFollow.path_index;
 
 				leader.GetComponent<AgentMovement> ().agentColor = Color.red;
+				leader.GetComponent<Rigidbody2D>().mass = GetComponent<Rigidbody2D>().mass;
 
 			} else {
 				if (transferLeadership) {
