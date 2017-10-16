@@ -8,7 +8,7 @@ public class PlayerDebug : MonoBehaviour {
 
 	public static PlayerDebug instance;
 	public Material mat;
-	public int circleSegments = 16;
+	public int defaultCircleSegments = 16;
 	public bool renderOnPause = true;
 	List<Vector3> verts;
 	List<Color> colors;
@@ -17,6 +17,7 @@ public class PlayerDebug : MonoBehaviour {
 	List<Vector3> circleCenters;
 	List<float> circleRadii;
 	List<Color> circleColors;
+	List<int> circleSegments;
 	List<float> circleTimes;
 
 	bool paused = false;
@@ -32,6 +33,7 @@ public class PlayerDebug : MonoBehaviour {
 		circleCenters = new List<Vector3>();
 		circleRadii = new List<float>();
 		circleColors = new List<Color>();
+		circleSegments = new List<int>();
 		circleTimes = new List<float>();
 	}
 
@@ -49,18 +51,19 @@ public class PlayerDebug : MonoBehaviour {
 		
 	}
 
-	public static void DrawCircle(Vector3 position, float radius, Color? color = null, float time = 0){
+	public static void DrawCircle(Vector3 position, float radius, Color? color = null, float time = 0, int? segments = null){
 		if(instance == null){
 			return;
 		}
-		color = color ?? Color.white;
-		instance.AddCircle(position,radius,color,time);
+		instance.AddCircle(position,radius,color,time,segments);
 	}
-	public void AddCircle(Vector3 position, float radius, Color? color = null, float time = 0){
+	public void AddCircle(Vector3 position, float radius, Color? color = null, float time = 0, int? segments = null){
 		color = color ?? Color.white;
+		segments = segments ?? Math.Max(3, defaultCircleSegments);
 		circleCenters.Add(position);
 		circleRadii.Add(radius);
 		circleColors.Add(color.Value);
+		circleSegments.Add(segments.Value);
 		circleTimes.Add (time);
 	}
 
@@ -68,7 +71,6 @@ public class PlayerDebug : MonoBehaviour {
 		if(instance == null){
 			return;
 		}
-		color = color ?? Color.white;
 		instance.AddLine(v1,v2,color, time);
 	}
 	public static void DrawRay(Vector3 v1, Vector3 v2, Color? color = null, float time = 0){
@@ -150,8 +152,7 @@ public class PlayerDebug : MonoBehaviour {
 		mat.color = Color.white;
 
 		const float totalRadians = Mathf.PI * 2f;
-		circleSegments = Math.Max(3, circleSegments);
-		float angleInc = totalRadians / circleSegments;
+
 
 		for (int i = 0, circleCentersCount = circleCenters.Count; i < circleCentersCount; i++) {
 			Vector3 center = circleCenters [i];
@@ -164,6 +165,8 @@ public class PlayerDebug : MonoBehaviour {
 
 			float x1 = center.x;
 			float y1 = center.y;
+
+			float angleInc = totalRadians / circleSegments[i];
 
 			GL.Vertex3(x1,y1,z);
 			for (float angle=0f;angle<totalRadians;angle += angleInc)
@@ -191,6 +194,7 @@ public class PlayerDebug : MonoBehaviour {
 					circleTimes.Add(d - t);
 					circleRadii.Add(circleRadii[i]);
 					circleColors.Add(circleColors[i]);
+					circleSegments.Add(circleSegments[i]);
 					circleCenters.Add (circleCenters [i]);
 				}
 			}
@@ -198,6 +202,7 @@ public class PlayerDebug : MonoBehaviour {
 			circleTimes.RemoveRange(0,count);
 			circleRadii.RemoveRange(0,count);
 			circleColors.RemoveRange(0,count);
+			circleSegments.RemoveRange(0,count);
 			circleCenters.RemoveRange (0, count);
 		}
 

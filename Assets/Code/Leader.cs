@@ -59,9 +59,8 @@ public class Leader : MonoBehaviour {
             }
         }
 		//Set circle sides for following agents
-		Camera.main.GetComponent<PlayerDebug> ().circleSegments = my_followers.Count >= 3 ? my_followers.Count : 16;
-
-        PlayerDebug.DrawCircle(transform.position, current_radius, new Color(1f,1f,0f,0.35f));
+		int sides = my_followers.Count >= 3 ? my_followers.Count : 16;
+		PlayerDebug.DrawCircle(transform.position, current_radius, new Color(1f,1f,0f,0.35f),0,sides);
 
 
 
