@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Leader : MonoBehaviour {
+	
+	public bool transferLeadership = true;
+
+	public float debugCircleLife = 4f;
+	[Range (0,1f)]
+	public float radiusOffset = 0;
 
     const float max_radius = 2f;
     const float radius_step = 0.02f;
@@ -18,6 +24,9 @@ public class Leader : MonoBehaviour {
     const float path_step_frequency = 1f;
     float path_step_timer = 0f;
 
+	Vector3 lastPosition;
+	float lastRadius;
+
     void Start () {
         // set up the mask to include only obstacles
         string[] layers = new string[1];
@@ -31,11 +40,11 @@ public class Leader : MonoBehaviour {
 
     void Update () {
 
-        for (int i = 0; i < my_followers.Count; i++) {
+		for (int i =  0; i < my_followers.Count; i++) {
             if (my_followers[i] == null) {
                 my_followers.RemoveAt(i);
-                break;  // only ever remove one follower per frame to avoid breaking list traversal -- if there are more we'll just get em next frame
-            }
+				i--;
+			}
         }
 
         blocked = false;
@@ -49,8 +58,10 @@ public class Leader : MonoBehaviour {
                 blocked = true;
             }
         }
+		//Set circle sides for following agents
+		Camera.main.GetComponent<PlayerDebug> ().circleSegments = my_followers.Count >= 3 ? my_followers.Count : 16;
 
-        PlayerDebug.DrawCircle(transform.position, current_radius, new Color(1f,1f,0f,0.5f));
+        PlayerDebug.DrawCircle(transform.position, current_radius, new Color(1f,1f,0f,0.35f));
 
 
 
@@ -62,15 +73,27 @@ public class Leader : MonoBehaviour {
             //PlayerDebug.DrawCircle(newpos, agent_radius_buffer, new Color(0f,0f,0f,0.5f));
         }
 
+		//Drops target circles based on distance and size of current circle
+		if (Vector2.Distance (transform.position, lastPosition) >= lastRadius + current_radius * radiusOffset) {
+			PlayerDebug.DrawCircle(transform.position, current_radius, new Color(1f,1f,0f,0.15f),path_step_frequency * debugCircleLife);
+			lastPosition = transform.position;
+			lastRadius = current_radius;
 
+			for (int i = 0; i < my_followers.Count; i++) {
+				my_followers[i].path_points.Enqueue(get_slot_position(i));
+			}
+		}
+
+		/* //Drops target cirlces every timestep
         path_step_timer += Time.deltaTime;
         if (path_step_timer > path_step_frequency) {
-            path_step_timer -= path_step_frequency;
+			path_step_timer -= path_step_frequency;
 
-            for (int i = 0; i < my_followers.Count; i++) {
-                my_followers[i].path_points.Enqueue(get_slot_position(i));
-            }
+			for (int i = 0; i < my_followers.Count; i++) {
+				my_followers[i].path_points.Enqueue(get_slot_position(i));
+			}
         }
+        */
     }
 
     public Vector3 get_slot_position (int index) {
@@ -78,4 +101,35 @@ public class Leader : MonoBehaviour {
         return transform.position + (new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f))*(current_radius - agent_radius_buffer);
     }
 
+	void OnDestroy(){
+
+		Leader leader = null;
+
+		for (int i = 0; i < my_followers.Count; i++) {
+			Follower follower = my_followers [i];
+			//Create new leader
+			if (i == 0 && transferLeadership) {
+				leader = follower.gameObject.AddComponent<Leader> ();
+				leader.debugCircleLife = debugCircleLife;
+				leader.radiusOffset = radiusOffset;
+				leader.my_followers = my_followers.GetRange (1, my_followers.Count - 1);
+				Destroy (follower);
+
+				DynamicPathFollow pathFollow = leader.gameObject.AddComponent<DynamicPathFollow> ();
+				DynamicPathFollow thisFollow = GetComponent<DynamicPathFollow> ();
+				pathFollow.my_path = thisFollow.my_path;
+				pathFollow.path_index = thisFollow.path_index;
+
+				leader.GetComponent<AgentMovement> ().agentColor = Color.red;
+
+			} else {
+				if (transferLeadership) {
+					follower.my_leader = leader;
+				} else {
+					Destroy (follower);
+				}
+			}
+
+		}
+	}
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class DynamicPathFollow : MonoBehaviour {
 
 	public Path my_path;
-    int path_index = 0;
+    public int path_index = 0;
     float arrival_radius = 1f;
 
 	protected AgentMovement agent;

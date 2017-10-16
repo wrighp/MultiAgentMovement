@@ -12,11 +12,12 @@ public class PlayerDebug : MonoBehaviour {
 	public bool renderOnPause = true;
 	List<Vector3> verts;
 	List<Color> colors;
-	List<float> times;
+	List<float> lineTimes;
 
 	List<Vector3> circleCenters;
 	List<float> circleRadii;
 	List<Color> circleColors;
+	List<float> circleTimes;
 
 	bool paused = false;
 
@@ -26,11 +27,12 @@ public class PlayerDebug : MonoBehaviour {
 		instance = this;
 		verts = new List<Vector3>();
 		colors = new List<Color>();
-		times = new List<float>();
+		lineTimes = new List<float>();
 
 		circleCenters = new List<Vector3>();
 		circleRadii = new List<float>();
 		circleColors = new List<Color>();
+		circleTimes = new List<float>();
 	}
 
 	private void OnStateChange(){
@@ -47,19 +49,19 @@ public class PlayerDebug : MonoBehaviour {
 		
 	}
 
-	public static void DrawCircle(Vector3 position, float radius, Color? color = null){
+	public static void DrawCircle(Vector3 position, float radius, Color? color = null, float time = 0){
 		if(instance == null){
 			return;
 		}
 		color = color ?? Color.white;
-		instance.AddCircle(position,radius,color);
+		instance.AddCircle(position,radius,color,time);
 	}
-	public void AddCircle(Vector3 position, float radius, Color? color = null){
+	public void AddCircle(Vector3 position, float radius, Color? color = null, float time = 0){
 		color = color ?? Color.white;
 		circleCenters.Add(position);
 		circleRadii.Add(radius);
 		circleColors.Add(color.Value);
-
+		circleTimes.Add (time);
 	}
 
 	public static void DrawLine(Vector3 v1, Vector3 v2, Color? color = null, float time = 0){
@@ -83,7 +85,7 @@ public class PlayerDebug : MonoBehaviour {
 		verts.Add(v1);
 		verts.Add(v2);
 		colors.Add(color.Value);
-		times.Add(time);
+		lineTimes.Add(time);
 	}
 
 	// LateUpdate is called once per frame
@@ -120,13 +122,13 @@ public class PlayerDebug : MonoBehaviour {
 
 		if(!paused){
 
-			int count = times.Count;
+			int count = lineTimes.Count;
 			//Add line back in if time isn't up
 			float t = Time.deltaTime;
-			for (int i = 0, timesCount = times.Count; i < timesCount; i++) {
-				float d = times [i];
+			for (int i = 0; i < count; i++) {
+				float d = lineTimes [i];
 				if(d >= 0){
-					times.Add(d - t);
+					lineTimes.Add(d - t);
 					verts.Add(verts[i*2]);
 					verts.Add(verts[i*2 + 1]);
 					colors.Add(colors[i]);
@@ -134,7 +136,7 @@ public class PlayerDebug : MonoBehaviour {
 			}
    
 
-			times.RemoveRange(0,count);
+			lineTimes.RemoveRange(0,count);
 			verts.RemoveRange(0,count * 2);
 			colors.RemoveRange(0,count);
 		}
@@ -177,11 +179,28 @@ public class PlayerDebug : MonoBehaviour {
 		}
 		GL.PopMatrix();
 
+
 		if(!paused){
-			circleCenters.Clear();
-			circleRadii.Clear();
-			circleColors.Clear();
+
+			int count = circleTimes.Count;
+			//Add line back in if time isn't up
+			float t = Time.deltaTime;
+			for (int i = 0; i < count; i++) {
+				float d = circleTimes [i];
+				if(d >= 0){
+					circleTimes.Add(d - t);
+					circleRadii.Add(circleRadii[i]);
+					circleColors.Add(circleColors[i]);
+					circleCenters.Add (circleCenters [i]);
+				}
+			}
+
+			circleTimes.RemoveRange(0,count);
+			circleRadii.RemoveRange(0,count);
+			circleColors.RemoveRange(0,count);
+			circleCenters.RemoveRange (0, count);
 		}
+
 	}
 
 
