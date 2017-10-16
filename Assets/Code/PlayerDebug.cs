@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System;
 
 public class PlayerDebug : MonoBehaviour {
@@ -23,8 +25,9 @@ public class PlayerDebug : MonoBehaviour {
 	bool paused = false;
 
 	void Awake(){
+		#if UNITY_EDITOR
 		EditorApplication.playmodeStateChanged += OnStateChange;
-
+		#endif
 		instance = this;
 		verts = new List<Vector3>();
 		colors = new List<Color>();
@@ -36,11 +39,11 @@ public class PlayerDebug : MonoBehaviour {
 		circleSegments = new List<int>();
 		circleTimes = new List<float>();
 	}
-
+	#if UNITY_EDITOR
 	private void OnStateChange(){
 		paused = renderOnPause && Application.isEditor && EditorApplication.isPaused;
 	}
-
+	#endif
 	// Use this for initialization
 	void Start () {
 
