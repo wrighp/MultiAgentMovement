@@ -12,12 +12,6 @@ public class ConeCheck : MonoBehaviour {
 		agent = GetComponent<AgentMovement>();
 	}
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
 	void Update () {
 
 		GameObject avoidTarget = null;
@@ -25,8 +19,8 @@ public class ConeCheck : MonoBehaviour {
 
 		//Get closest target within cone to avoid
 		foreach(GameObject go in Obstacles.GetGameObjects()){
-			//Ignore checking against yourself
-			if(go == gameObject){
+			//Ignore checking against agents
+			if(go.GetComponent<AgentMovement>()){
 				continue;
 			}
 
@@ -55,7 +49,7 @@ public class ConeCheck : MonoBehaviour {
 
 		//Else do avoidance on target
 		agent.targetDirection = AvoidDirection(transform, avoidTarget.transform.position);
-		//PlayerDebug.DrawRay(transform.position,agent.targetDirection,new Color(1f,0,0f,1f));
+		PlayerDebug.DrawRay(transform.position,agent.targetDirection,new Color(1f,0,0f,1f));
 	}
 
 	static Vector2 AvoidDirection(Transform transform, Vector3 targetPosition){

@@ -137,8 +137,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 41966351}
   m_LocalRotation: {x: -0, y: -0, z: -0.9659252, w: 0.25882143}
-  m_LocalPosition: {x: -4.866, y: -2.382, z: 0}
-  m_LocalScale: {x: 2.71461, y: 0.8889945, z: 1}
+  m_LocalPosition: {x: -5.0895, y: -1.9934, z: 0}
+  m_LocalScale: {x: 2.71461, y: 0.45109668, z: 1}
   m_Children: []
   m_Father: {fileID: 1602463746}
   m_RootOrder: 1
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 47567245}
   - component: {fileID: 47567244}
   - component: {fileID: 47567248}
+  - component: {fileID: 47567249}
   m_Layer: 0
   m_Name: BoidAgent (1)
   m_TagString: Untagged
@@ -254,7 +255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &47567245
 CircleCollider2D:
@@ -323,6 +323,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &47567249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 47567242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &58928331
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +347,7 @@ GameObject:
   - component: {fileID: 58928336}
   - component: {fileID: 58928335}
   - component: {fileID: 58928334}
+  - component: {fileID: 58928338}
   - component: {fileID: 58928333}
   - component: {fileID: 58928337}
   m_Layer: 0
@@ -436,6 +450,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &58928338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 58928331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!43 &64792002
 Mesh:
   m_ObjectHideFlags: 0
@@ -605,6 +632,7 @@ GameObject:
   - component: {fileID: 87006798}
   - component: {fileID: 87006797}
   - component: {fileID: 87006801}
+  - component: {fileID: 87006802}
   m_Layer: 0
   m_Name: BoidAgent (2)
   m_TagString: Untagged
@@ -637,7 +665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &87006798
 CircleCollider2D:
@@ -706,6 +733,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &87006802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87006795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &176898173
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,6 +756,7 @@ GameObject:
   - component: {fileID: 176898174}
   - component: {fileID: 176898178}
   - component: {fileID: 176898177}
+  - component: {fileID: 176898179}
   - component: {fileID: 176898176}
   - component: {fileID: 176898175}
   m_Layer: 0
@@ -807,6 +848,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &176898179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176898173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &188011005
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +874,7 @@ GameObject:
   - component: {fileID: 188011008}
   - component: {fileID: 188011007}
   - component: {fileID: 188011011}
+  - component: {fileID: 188011012}
   m_Layer: 0
   m_Name: BoidAgent (3)
   m_TagString: Untagged
@@ -852,7 +907,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &188011008
 CircleCollider2D:
@@ -921,6 +975,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &188011012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 188011005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &277607329
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1066,7 @@ GameObject:
   - component: {fileID: 369911663}
   - component: {fileID: 369911667}
   - component: {fileID: 369911666}
+  - component: {fileID: 369911668}
   - component: {fileID: 369911665}
   - component: {fileID: 369911664}
   m_Layer: 0
@@ -1090,6 +1158,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &369911668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369911662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &371955601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,6 +1296,7 @@ GameObject:
   - component: {fileID: 415232855}
   - component: {fileID: 415232854}
   - component: {fileID: 415232858}
+  - component: {fileID: 415232859}
   m_Layer: 0
   m_Name: BoidAgent (11)
   m_TagString: Untagged
@@ -1247,7 +1329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &415232855
 CircleCollider2D:
@@ -1316,6 +1397,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &415232859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 415232852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &415763619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,6 +1423,7 @@ GameObject:
   - component: {fileID: 415763622}
   - component: {fileID: 415763621}
   - component: {fileID: 415763625}
+  - component: {fileID: 415763626}
   m_Layer: 0
   m_Name: BoidAgent (10)
   m_TagString: Untagged
@@ -1361,7 +1456,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &415763622
 CircleCollider2D:
@@ -1430,6 +1524,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &415763626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 415763619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &446405381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1547,7 @@ GameObject:
   - component: {fileID: 446405382}
   - component: {fileID: 446405386}
   - component: {fileID: 446405385}
+  - component: {fileID: 446405387}
   - component: {fileID: 446405384}
   - component: {fileID: 446405383}
   m_Layer: 0
@@ -1531,6 +1639,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &446405387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446405381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &465952062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,6 +1662,7 @@ GameObject:
   - component: {fileID: 465952063}
   - component: {fileID: 465952067}
   - component: {fileID: 465952066}
+  - component: {fileID: 465952068}
   - component: {fileID: 465952065}
   - component: {fileID: 465952064}
   m_Layer: 0
@@ -1632,6 +1754,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &465952068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 465952062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &473570650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,6 +1834,7 @@ GameObject:
   - component: {fileID: 507904994}
   - component: {fileID: 507904993}
   - component: {fileID: 507904992}
+  - component: {fileID: 507904996}
   - component: {fileID: 507904991}
   - component: {fileID: 507904995}
   m_Layer: 0
@@ -1801,6 +1937,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &507904996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 507904989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &526335696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,6 +2059,7 @@ GameObject:
   - component: {fileID: 534809961}
   - component: {fileID: 534809960}
   - component: {fileID: 534809959}
+  - component: {fileID: 534809963}
   - component: {fileID: 534809958}
   - component: {fileID: 534809962}
   m_Layer: 0
@@ -2012,6 +2162,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &534809963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534809956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &565885546
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,6 +2213,7 @@ GameObject:
   - component: {fileID: 582509414}
   - component: {fileID: 582509418}
   - component: {fileID: 582509417}
+  - component: {fileID: 582509419}
   - component: {fileID: 582509416}
   - component: {fileID: 582509415}
   m_Layer: 0
@@ -2141,6 +2305,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &582509419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 582509413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &590512868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,6 +2328,7 @@ GameObject:
   - component: {fileID: 590512869}
   - component: {fileID: 590512873}
   - component: {fileID: 590512872}
+  - component: {fileID: 590512874}
   - component: {fileID: 590512871}
   - component: {fileID: 590512870}
   m_Layer: 0
@@ -2242,6 +2420,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &590512874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 590512868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &612541779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,8 +2458,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 612541779}
   m_LocalRotation: {x: -0, y: -0, z: -0.9659252, w: 0.25882143}
-  m_LocalPosition: {x: -5.734, y: -0.884, z: 0}
-  m_LocalScale: {x: 2.714609, y: 0.80724376, z: 1}
+  m_LocalPosition: {x: -5.5298, y: -1.2309, z: 0}
+  m_LocalScale: {x: 2.714609, y: 0.44248697, z: 1}
   m_Children: []
   m_Father: {fileID: 1602463746}
   m_RootOrder: 2
@@ -2595,6 +2786,7 @@ GameObject:
   - component: {fileID: 650087666}
   - component: {fileID: 650087670}
   - component: {fileID: 650087669}
+  - component: {fileID: 650087671}
   - component: {fileID: 650087668}
   - component: {fileID: 650087667}
   m_Layer: 0
@@ -2686,6 +2878,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &650087671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650087665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &683826770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2880,6 +3085,7 @@ GameObject:
   - component: {fileID: 710861853}
   - component: {fileID: 710861852}
   - component: {fileID: 710861851}
+  - component: {fileID: 710861855}
   - component: {fileID: 710861850}
   - component: {fileID: 710861854}
   m_Layer: 0
@@ -2982,6 +3188,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &710861855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 710861848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!43 &803149796
 Mesh:
   m_ObjectHideFlags: 0
@@ -3151,6 +3370,7 @@ GameObject:
   - component: {fileID: 835951008}
   - component: {fileID: 835951007}
   - component: {fileID: 835951011}
+  - component: {fileID: 835951012}
   m_Layer: 0
   m_Name: BoidAgent
   m_TagString: Untagged
@@ -3183,7 +3403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 835951011}
 --- !u!58 &835951008
 CircleCollider2D:
@@ -3252,6 +3471,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 835951010}
+--- !u!114 &835951012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 835951005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &838007494
 GameObject:
   m_ObjectHideFlags: 0
@@ -3360,6 +3592,7 @@ GameObject:
   - component: {fileID: 851503462}
   - component: {fileID: 851503461}
   - component: {fileID: 851503460}
+  - component: {fileID: 851503464}
   - component: {fileID: 851503459}
   - component: {fileID: 851503463}
   m_Layer: 0
@@ -3462,6 +3695,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &851503464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851503457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &855294366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,6 +3775,7 @@ GameObject:
   - component: {fileID: 883105489}
   - component: {fileID: 883105488}
   - component: {fileID: 883105487}
+  - component: {fileID: 883105491}
   - component: {fileID: 883105486}
   - component: {fileID: 883105490}
   m_Layer: 0
@@ -3631,6 +3878,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &883105491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 883105484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &886043833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3670,6 +3930,7 @@ GameObject:
   - component: {fileID: 969889566}
   - component: {fileID: 969889565}
   - component: {fileID: 969889564}
+  - component: {fileID: 969889568}
   - component: {fileID: 969889563}
   - component: {fileID: 969889567}
   m_Layer: 0
@@ -3772,6 +4033,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &969889568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 969889561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!43 &970050254
 Mesh:
   m_ObjectHideFlags: 0
@@ -3913,6 +4187,7 @@ GameObject:
   - component: {fileID: 980954614}
   - component: {fileID: 980954613}
   - component: {fileID: 980954617}
+  - component: {fileID: 980954618}
   m_Layer: 0
   m_Name: BoidAgent (7)
   m_TagString: Untagged
@@ -3945,7 +4220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &980954614
 CircleCollider2D:
@@ -4014,6 +4288,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &980954618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 980954611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1000475421
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,6 +4312,7 @@ GameObject:
   - component: {fileID: 1000475424}
   - component: {fileID: 1000475423}
   - component: {fileID: 1000475425}
+  - component: {fileID: 1000475428}
   - component: {fileID: 1000475426}
   - component: {fileID: 1000475427}
   m_Layer: 0
@@ -4127,6 +4415,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1000475428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1000475421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1054090914
 GameObject:
   m_ObjectHideFlags: 0
@@ -4289,6 +4590,7 @@ GameObject:
   - component: {fileID: 1139904400}
   - component: {fileID: 1139904399}
   - component: {fileID: 1139904398}
+  - component: {fileID: 1139904402}
   - component: {fileID: 1139904397}
   - component: {fileID: 1139904401}
   m_Layer: 0
@@ -4391,6 +4693,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1139904402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1139904395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1220660969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,6 +4717,7 @@ GameObject:
   - component: {fileID: 1220660974}
   - component: {fileID: 1220660973}
   - component: {fileID: 1220660972}
+  - component: {fileID: 1220660976}
   - component: {fileID: 1220660971}
   - component: {fileID: 1220660975}
   m_Layer: 0
@@ -4504,6 +4820,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1220660976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220660969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1237175310
 GameObject:
   m_ObjectHideFlags: 0
@@ -4515,6 +4844,7 @@ GameObject:
   - component: {fileID: 1237175315}
   - component: {fileID: 1237175314}
   - component: {fileID: 1237175313}
+  - component: {fileID: 1237175317}
   - component: {fileID: 1237175312}
   - component: {fileID: 1237175316}
   m_Layer: 0
@@ -4617,6 +4947,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106e46d88b4c684b8406c99b07173db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1237175317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237175310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1257546207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4748,6 +5091,7 @@ GameObject:
   - component: {fileID: 1284417883}
   - component: {fileID: 1284417887}
   - component: {fileID: 1284417886}
+  - component: {fileID: 1284417888}
   - component: {fileID: 1284417885}
   - component: {fileID: 1284417884}
   m_Layer: 0
@@ -4839,6 +5183,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1284417888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1284417882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1325865585
 GameObject:
   m_ObjectHideFlags: 0
@@ -4977,6 +5334,7 @@ GameObject:
   - component: {fileID: 1500021489}
   - component: {fileID: 1500021488}
   - component: {fileID: 1500021492}
+  - component: {fileID: 1500021493}
   m_Layer: 0
   m_Name: BoidAgent (9)
   m_TagString: Untagged
@@ -5009,7 +5367,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &1500021489
 CircleCollider2D:
@@ -5078,6 +5435,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &1500021493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1500021486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1518883962
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,6 +5555,7 @@ GameObject:
   - component: {fileID: 1520945651}
   - component: {fileID: 1520945655}
   - component: {fileID: 1520945654}
+  - component: {fileID: 1520945656}
   - component: {fileID: 1520945653}
   - component: {fileID: 1520945652}
   m_Layer: 0
@@ -5276,6 +5647,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1520945656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1520945650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1534729939
 GameObject:
   m_ObjectHideFlags: 0
@@ -5392,6 +5776,7 @@ GameObject:
   - component: {fileID: 1565797550}
   - component: {fileID: 1565797549}
   - component: {fileID: 1565797548}
+  - component: {fileID: 1565797553}
   m_Layer: 0
   m_Name: BoidAgent (12)
   m_TagString: Untagged
@@ -5436,7 +5821,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 1565797548}
 --- !u!58 &1565797550
 CircleCollider2D:
@@ -5493,6 +5877,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1565797553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1565797546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1572491331
 GameObject:
   m_ObjectHideFlags: 0
@@ -5506,6 +5903,7 @@ GameObject:
   - component: {fileID: 1572491334}
   - component: {fileID: 1572491333}
   - component: {fileID: 1572491337}
+  - component: {fileID: 1572491338}
   m_Layer: 0
   m_Name: BoidAgent (8)
   m_TagString: Untagged
@@ -5538,7 +5936,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &1572491334
 CircleCollider2D:
@@ -5607,6 +6004,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &1572491338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1572491331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1602463745
 GameObject:
   m_ObjectHideFlags: 0
@@ -5893,6 +6303,7 @@ GameObject:
   - component: {fileID: 1653441294}
   - component: {fileID: 1653441293}
   - component: {fileID: 1653441297}
+  - component: {fileID: 1653441298}
   m_Layer: 0
   m_Name: BoidAgent (6)
   m_TagString: Untagged
@@ -5925,7 +6336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &1653441294
 CircleCollider2D:
@@ -5994,6 +6404,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &1653441298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1653441291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1682919656
 GameObject:
   m_ObjectHideFlags: 0
@@ -6102,6 +6525,7 @@ GameObject:
   - component: {fileID: 1753477745}
   - component: {fileID: 1753477744}
   - component: {fileID: 1753477743}
+  - component: {fileID: 1753477747}
   - component: {fileID: 1753477746}
   - component: {fileID: 1753477742}
   m_Layer: 0
@@ -6219,6 +6643,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
   path_index: 0
+--- !u!114 &1753477747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753477740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1780216236
 GameObject:
   m_ObjectHideFlags: 0
@@ -6435,6 +6872,7 @@ GameObject:
   - component: {fileID: 1846009992}
   - component: {fileID: 1846009996}
   - component: {fileID: 1846009995}
+  - component: {fileID: 1846009997}
   - component: {fileID: 1846009994}
   - component: {fileID: 1846009993}
   m_Layer: 0
@@ -6526,6 +6964,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1846009997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1846009991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!43 &1872217578
 Mesh:
   m_ObjectHideFlags: 0
@@ -6667,6 +7118,7 @@ GameObject:
   - component: {fileID: 1884847539}
   - component: {fileID: 1884847538}
   - component: {fileID: 1884847542}
+  - component: {fileID: 1884847543}
   m_Layer: 0
   m_Name: BoidAgent (4)
   m_TagString: Untagged
@@ -6699,7 +7151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &1884847539
 CircleCollider2D:
@@ -6768,6 +7219,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &1884847543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884847536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &1895272970
 GameObject:
   m_ObjectHideFlags: 0
@@ -6968,6 +7432,7 @@ GameObject:
   - component: {fileID: 1927305192}
   - component: {fileID: 1927305196}
   - component: {fileID: 1927305195}
+  - component: {fileID: 1927305197}
   - component: {fileID: 1927305194}
   - component: {fileID: 1927305193}
   m_Layer: 0
@@ -7059,6 +7524,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1927305197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927305191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
 --- !u!1 &2088558745
 GameObject:
   m_ObjectHideFlags: 0
@@ -7198,6 +7676,7 @@ GameObject:
   - component: {fileID: 2146374217}
   - component: {fileID: 2146374216}
   - component: {fileID: 2146374220}
+  - component: {fileID: 2146374221}
   m_Layer: 0
   m_Name: BoidAgent (5)
   m_TagString: Untagged
@@ -7230,7 +7709,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_path: {fileID: 691336583}
-  path_index: 0
   my_boid: {fileID: 87006801}
 --- !u!58 &2146374217
 CircleCollider2D:
@@ -7299,3 +7777,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 87006800}
+--- !u!114 &2146374221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2146374214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c45aadbe9c26246888af0e20e90e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  maxDistance: 2
