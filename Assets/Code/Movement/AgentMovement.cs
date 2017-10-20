@@ -34,7 +34,10 @@ public class AgentMovement : MonoBehaviour {
 		transform.rotation = Quaternion.AngleAxis (targetAngle - 90f, Vector3.forward);
 
 		PlayerDebug.DrawRay (transform.position, aimingDirection * indicatorLineLength, Color.white);
-		PlayerDebug.DrawCircle(transform.position, GetComponent<CircleCollider2D>().radius,agentColor);
+
+        if (GetComponent<CircleCollider2D>()) {
+		    PlayerDebug.DrawCircle(transform.position, GetComponent<CircleCollider2D>().radius,agentColor);
+        }
 	}
 	void FixedUpdate(){
 		acceleration = Mathf.Clamp01(acceleration);
