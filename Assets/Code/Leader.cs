@@ -121,7 +121,6 @@ public class Leader : MonoBehaviour {
 				pathFollow.my_path = thisFollow.my_path;
 				pathFollow.path_index = thisFollow.path_index;
 
-				leader.GetComponent<AgentMovement> ().agentColor = Color.red;
 				leader.GetComponent<Rigidbody2D>().mass = GetComponent<Rigidbody2D>().mass;
 
 			} else {
