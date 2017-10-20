@@ -19,37 +19,40 @@ public class ConeCheck : MonoBehaviour {
 
 		//Get closest target within cone to avoid
 		foreach(GameObject go in Obstacles.GetGameObjects()){
+
 			//Ignore checking against agents
-			if(go.GetComponent<AgentMovement>()){
-				continue;
-			}
+            if (go) {
+			    if(go.GetComponent<AgentMovement>()){
+				    continue;
+			    }
 
-			Vector2 vectorDirection = go.transform.position - transform.position;
-			Vector2 forwardDirection = transform.up;
-			//Dot product to find angle (function then converts to 0-180 degrees)
-			float angle = Vector2.Angle (vectorDirection, forwardDirection);
+			    Vector2 vectorDirection = go.transform.position - transform.position;
+			    Vector2 forwardDirection = transform.up;
+			    //Dot product to find angle (function then converts to 0-180 degrees)
+			    float angle = Vector2.Angle (vectorDirection, forwardDirection);
 
-			//If the doubled half angle is less than the cone check angle consider for avoidance
-			if(angle * 2f <= maxAngle){
-				//Evade from closest character or from average of characters
-				//In this case we are evading from closest character
-				float distance = Vector2.Distance(transform.position, go.transform.position);
+			    //If the doubled half angle is less than the cone check angle consider for avoidance
+			    if(angle * 2f <= maxAngle){
+				    //Evade from closest character or from average of characters
+				    //In this case we are evading from closest character
+				    float distance = Vector2.Distance(transform.position, go.transform.position);
 
-				if(distance < lowestDistance){
-					lowestDistance = distance;
-					avoidTarget = go; 
-				}
-			}
-		}
+				    if(distance < lowestDistance){
+					    lowestDistance = distance;
+					    avoidTarget = go; 
+				    }
+			    }
+		    }
 
-		//If there was no target, proceed with normal movement
-		if(avoidTarget == null){
-			return;
-		}
+		    //If there was no target, proceed with normal movement
+		    if(avoidTarget == null){
+			    return;
+		    }
 
-		//Else do avoidance on target
-		agent.targetDirection = AvoidDirection(transform, avoidTarget.transform.position);
-		PlayerDebug.DrawRay(transform.position,agent.targetDirection,new Color(1f,0,0f,1f));
+		    //Else do avoidance on target
+		    agent.targetDirection = AvoidDirection(transform, avoidTarget.transform.position);
+		    PlayerDebug.DrawRay(transform.position,agent.targetDirection,new Color(1f,0,0f,1f));
+        }
 	}
 
 	static Vector2 AvoidDirection(Transform transform, Vector3 targetPosition){
